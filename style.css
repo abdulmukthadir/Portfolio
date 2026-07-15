@@ -1,4 +1,4 @@
- :root{
+:root{
     --bg:#05050a;
     --bg-2:#0a0912;
     --ring-hot:#ff9d4d;
@@ -28,7 +28,7 @@
   /* ---------- Nav ---------- */
   nav{
     position:fixed; top:0; left:0; right:0; z-index:100;
-    display:flex; justify-content:space-between; align-items:center;
+    display:flex; justify-content:flex-end; align-items:center;
     padding:22px clamp(20px,5vw,56px);
     font-family:var(--mono);
     font-size:13px;
@@ -182,6 +182,26 @@
   .arch-group li b{ color:var(--text); font-weight:500; }
   .arch-group li small{ color:var(--text-faint); white-space:nowrap; }
 
+  /* ---------- Offer ---------- */
+  .offer-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:6px; overflow:hidden; }
+  @media (max-width:900px){ .offer-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:520px){ .offer-grid{grid-template-columns:1fr;} }
+  .offer-card{
+    background:var(--bg-2);
+    padding:28px 22px;
+    transition:background .25s;
+  }
+  .offer-card:hover{ background:#0d0c19; }
+  .offer-tag{
+    display:inline-block;
+    font-family:var(--mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--accent);
+    border:1px solid rgba(0,229,255,0.3);
+    padding:4px 10px; border-radius:20px;
+    margin-bottom:14px;
+  }
+  .offer-card p{ color:var(--text-dim); font-size:.92rem; line-height:1.6; }
+
   /* ---------- Projects ---------- */
   .proj-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
   @media (max-width:760px){ .proj-grid{grid-template-columns:1fr;} }
@@ -226,6 +246,9 @@
   footer .orbit-line{ width:1px; height:60px; background:linear-gradient(var(--line), var(--ring-mid)); margin:0 auto 40px; }
   footer h2{ font-family:var(--display); font-size:clamp(1.8rem,4vw,2.6rem); font-weight:600; margin-bottom:20px; }
   footer p{ color:var(--text-dim); max-width:420px; margin:0 auto 34px; line-height:1.7; }
+  .contact-links{
+    display:flex; flex-wrap:wrap; justify-content:center; gap:16px;
+  }
   .gh-btn{
     display:inline-flex; align-items:center; gap:10px;
     font-family:var(--mono); font-size:14px;
@@ -242,282 +265,3 @@
     .eyebrow,.hero h1,.hero p.tag,.scroll-cue{ animation:none !important; opacity:1 !important; }
     .scroll-cue .line{ animation:none; }
   }
-</style>
-</head>
-<body>
-
-<nav>
-  <div class="logo">AM<span>_</span>dev</div>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#stack">Stack</a></li>
-    <li><a href="#work">Work</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
-
-<section class="hero">
-  <canvas id="bh-canvas"></canvas>
-  <div class="hero-content">
-    <div class="eyebrow">CHENNAI · INDIA</div>
-    <h1>Abdul&nbsp;Mukthadir</h1>
-    <p class="tag">AWS Cloud Developer — building systems with <em>event-horizon</em> reliability.</p>
-  </div>
-  <div class="scroll-cue"><span>SCROLL</span><span class="line"></span></div>
-</section>
-
-<section id="about">
-  <div class="section-head">
-    <span class="idx">01 · ABOUT</span>
-    <h2>Fluid intelligence, applied to infrastructure.</h2>
-  </div>
-  <div class="about-grid">
-    <div class="about-text">
-      <p>I'm a <strong>cloud developer based in Chennai</strong> who builds things end to end — from a Raspberry-Pi-style CCTV rig with live object detection, to a full data lakehouse pipeline on AWS. My work sits at the intersection of practical software engineering and cloud infrastructure that has to hold up under real load.</p>
-      <p>Whether it's wiring up a <strong>React front end</strong>, provisioning <strong>AWS resources by hand</strong> to understand what's really happening under a managed service, or turning sensor data into a queryable lakehouse, I like following a system from the edge device all the way down to the storage layer.</p>
-    </div>
-    <div class="stat-panel">
-      <div class="row"><span>focus</span><span>cloud · backend · data</span></div>
-      <div class="row"><span>base</span><span>chennai, in</span></div>
-      <div class="row"><span>repos</span><span>7 public</span></div>
-      <div class="row"><span>primary</span><span>python · js</span></div>
-      <div class="row"><span>status</span><span>🎯 focusing</span></div>
-    </div>
-  </div>
-</section>
-
-<section id="stack">
-  <div class="section-head">
-    <span class="idx">02 · STACK</span>
-    <h2>Resources I build with</h2>
-    <p>The AWS services and tools that show up across my projects — from the STEDI analytics lakehouse to smaller deployed apps.</p>
-  </div>
-  <div class="arch-frame">
-    <div class="arch-groups">
-      <div class="arch-group">
-        <h3>Compute &amp; Delivery</h3>
-        <ul>
-          <li><b>EC2</b><small>virtual servers</small></li>
-          <li><b>Lambda</b><small>serverless functions</small></li>
-          <li><b>API Gateway</b><small>REST endpoints</small></li>
-          <li><b>CloudFront</b><small>CDN / edge cache</small></li>
-        </ul>
-      </div>
-      <div class="arch-group">
-        <h3>Data &amp; Storage</h3>
-        <ul>
-          <li><b>S3</b><small>object storage / data lake</small></li>
-          <li><b>Glue</b><small>ETL &amp; catalog</small></li>
-          <li><b>Athena</b><small>SQL over S3</small></li>
-          <li><b>DynamoDB</b><small>NoSQL store</small></li>
-        </ul>
-      </div>
-      <div class="arch-group">
-        <h3>Platform &amp; Ops</h3>
-        <ul>
-          <li><b>IAM</b><small>access &amp; roles</small></li>
-          <li><b>VPC</b><small>network isolation</small></li>
-          <li><b>CloudWatch</b><small>logs &amp; metrics</small></li>
-          <li><b>CloudFormation</b><small>infra as code</small></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="work">
-  <div class="section-head">
-    <span class="idx">03 · WORK</span>
-    <h2>Selected repositories</h2>
-    <p>Pulled straight from GitHub — six projects spanning computer vision, cloud data engineering, and front-end builds.</p>
-  </div>
-  <div class="proj-grid" id="proj-grid"></div>
-</section>
-
-<footer id="contact">
-  <div class="orbit-line"></div>
-  <h2>Let's build something that pulls its weight.</h2>
-  <p>All my work is open — the deepest look at how I build is on GitHub.</p>
-  <a class="gh-btn" href="https://github.com/abdulmukthadir" target="_blank" rel="noopener">
-    <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
-    github.com/abdulmukthadir
-  </a>
-  <div class="copyright">© 2026 ABDUL MUKTHADIR — BUILT WITH A CANVAS &amp; A SINGULARITY</div>
-</footer>
-
-<script>
-// ---------------- Black hole canvas (perf-optimized) ----------------
-(function(){
-  const canvas = document.getElementById('bh-canvas');
-  const ctx = canvas.getContext('2d', {alpha:false});
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let W, H, cx, cy, dpr;
-  let particles = [];
-  const isSmall = window.innerWidth < 700;
-  const COUNT = reduceMotion ? 0 : (isSmall ? 260 : 520);
-  const RH = () => Math.min(W, H) * 0.09; // event horizon radius
-
-  function resize(){
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
-    W = canvas.clientWidth = canvas.offsetWidth;
-    H = canvas.clientHeight = canvas.offsetHeight;
-    canvas.width = W * dpr;
-    canvas.height = H * dpr;
-    ctx.setTransform(dpr,0,0,dpr,0,0);
-    cx = W/2; cy = H*0.52;
-  }
-
-  function rand(a,b){ return a + Math.random()*(b-a); }
-
-  function makeParticle(){
-    const r = rand(RH()*1.6, Math.max(W,H)*0.62);
-    const angle = rand(0, Math.PI*2);
-    const speed = (0.0009 + (1/r)*2.6) * rand(0.7,1.3);
-    const hueMix = Math.random();
-    let color;
-    if(hueMix < 0.3) color = '255,157,77';      // hot orange
-    else if(hueMix < 0.65) color = '198,92,255'; // violet
-    else color = '91,60,255';                    // deep blue
-    return {
-      r, angle, speed,
-      size: rand(0.5, 1.6),
-      alpha: rand(0.25, 0.9),
-      color,
-      trail: rand(0.85,0.97)
-    };
-  }
-
-  function init(){
-    resize();
-    particles = [];
-    for(let i=0;i<COUNT;i++) particles.push(makeParticle());
-  }
-
-  function drawGlow(){
-    // core glow
-    const g = ctx.createRadialGradient(cx,cy,0,cx,cy,RH()*3.2);
-    g.addColorStop(0,'rgba(5,5,10,1)');
-    g.addColorStop(0.32,'rgba(20,10,35,0.9)');
-    g.addColorStop(0.55,'rgba(60,20,70,0.35)');
-    g.addColorStop(1,'rgba(5,5,10,0)');
-    ctx.fillStyle = g;
-    ctx.beginPath();
-    ctx.arc(cx,cy,RH()*3.2,0,Math.PI*2);
-    ctx.fill();
-
-    // photon ring
-    ctx.beginPath();
-    ctx.arc(cx,cy,RH(),0,Math.PI*2);
-    const ring = ctx.createRadialGradient(cx,cy,RH()*0.7,cx,cy,RH()*1.15);
-    ring.addColorStop(0,'rgba(5,5,10,1)');
-    ring.addColorStop(0.85,'rgba(255,157,77,0.9)');
-    ring.addColorStop(1,'rgba(255,157,77,0)');
-    ctx.fillStyle = ring;
-    ctx.arc(cx,cy,RH()*1.15,0,Math.PI*2);
-    ctx.fill();
-
-    // true event horizon (black core)
-    ctx.beginPath();
-    ctx.fillStyle = '#050508';
-    ctx.arc(cx,cy,RH()*0.86,0,Math.PI*2);
-    ctx.fill();
-  }
-
-  function frame(){
-    // trail fade
-    ctx.fillStyle = 'rgba(5,5,10,0.28)';
-    ctx.fillRect(0,0,W,H);
-
-    for(let i=0;i<particles.length;i++){
-      const p = particles[i];
-      p.angle += p.speed;
-      p.r -= p.speed * (RH()*0.18); // slow inward drift
-
-      if(p.r < RH()*0.9){
-        Object.assign(p, makeParticle());
-        p.r = Math.max(W,H)*0.62;
-        continue;
-      }
-      // gravitational squash near horizon = flatten ellipse (accretion disk look)
-      const squash = 0.38;
-      const x = cx + Math.cos(p.angle) * p.r;
-      const y = cy + Math.sin(p.angle) * p.r * squash;
-
-      ctx.beginPath();
-      ctx.fillStyle = `rgba(${p.color},${p.alpha})`;
-      ctx.arc(x,y,p.size,0,Math.PI*2);
-      ctx.fill();
-    }
-
-    drawGlow();
-    requestAnimationFrame(frame);
-  }
-
-  init();
-  window.addEventListener('resize', ()=>{ resize(); });
-  if(!reduceMotion){
-    requestAnimationFrame(frame);
-  } else {
-    drawGlow();
-  }
-})();
-
-// ---------------- Project cards ----------------
-const projects = [
-  {
-    name:'project-CCTV',
-    lang:'Python',
-    desc:'An old Redmi 5A repurposed into a live CCTV system with real-time object detection using Python and OpenCV.',
-    url:'https://github.com/abdulmukthadir/project-CCTV'
-  },
-  {
-    name:'STEDI-Human-Balance-Analytics',
-    lang:'Python · AWS',
-    desc:'Data lakehouse pipeline on AWS: ingests STEDI Step Trainer sensor and mobile app data, curating it for model training.',
-    url:'https://github.com/abdulmukthadir/STEDI-Human-Balance-Analytics'
-  },
-  {
-    name:'e-commerce-website',
-    lang:'HTML/CSS/JS',
-    desc:'"Anon" — a fully responsive ecommerce storefront, tuned for compatibility across mobile devices.',
-    url:'https://github.com/abdulmukthadir/e-commerce-website'
-  },
-  {
-    name:'Notes-website',
-    lang:'React',
-    desc:'A feature-rich notes app built with React, Tailwind CSS, React Router DOM and localStorage persistence.',
-    url:'https://github.com/abdulmukthadir/Notes-website'
-  },
-  {
-    name:'edutech-website',
-    lang:'HTML/Tailwind',
-    desc:'A modern edutech landing page built from a Figma design, using HTML and Tailwind CSS.',
-    url:'https://github.com/abdulmukthadir/edutech-website'
-  },
-  {
-    name:'yt-mp4--mp3',
-    lang:'Python',
-    desc:'A small utility that converts YouTube videos into downloadable MP3 audio files.',
-    url:'https://github.com/abdulmukthadir/yt-mp4--mp3'
-  }
-];
-
-const grid = document.getElementById('proj-grid');
-grid.innerHTML = projects.map(p => `
-  <a class="proj-card" href="${p.url}" target="_blank" rel="noopener">
-    <div class="proj-top">
-      <h3>${p.name}</h3>
-      <span class="lang">${p.lang}</span>
-    </div>
-    <p>${p.desc}</p>
-    <span class="go">view repository →</span>
-  </a>
-`).join('');
-
-grid.querySelectorAll('.proj-card').forEach(card=>{
-  card.addEventListener('mousemove', e=>{
-    const rect = card.getBoundingClientRect();
-    card.style.setProperty('--mx', ((e.clientX-rect.left)/rect.width*100)+'%');
-    card.style.setProperty('--my', ((e.clientY-rect.top)/rect.height*100)+'%');
-  });
-});
